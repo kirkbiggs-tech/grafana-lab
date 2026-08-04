@@ -50,7 +50,7 @@ Acceptance criteria:
 
 Priority: High
 Story points: 3
-Status: Ready
+Status: Done
 
 ### Story 3: Automated Testing
 

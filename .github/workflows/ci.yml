@@ -26,4 +26,4 @@ jobs:
           bash -n scripts/test-health-check.sh
 
       - name: Run automated tests
-        run: ./scripts/test-health-check.shx
+        run: ./scripts/test-health-check.sh

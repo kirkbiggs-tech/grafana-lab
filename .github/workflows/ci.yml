@@ -29,7 +29,14 @@ jobs:
         run: ./scripts/test-health-check.sh
       - name: Build Docker image
         run: docker build -t grafana-lab-status:ci docker/
-
+      - name: Scan Docker image
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          image-ref: grafana-lab-status:ci
+          format: table
+          exit-code: "0"
+          ignore-unfixed: true
+          severity: HIGH,CRITICAL
       - name: Run container smoke test
         run: |
           docker run -d --rm --name grafana-lab-status-ci -p 8080:80 grafana-lab-status:ci

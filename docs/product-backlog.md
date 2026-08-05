@@ -67,7 +67,7 @@ Acceptance criteria:
 
 Priority: High
 Story points: 5
-Status: Backlog
+Status: Done
 
 ### Story 4: Grafana Dashboard
 

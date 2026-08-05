@@ -27,4 +27,4 @@ free -h
 
 echo
 echo "=== Grafana Service ==="
-systemctl is-active grafana-server
+systemctl is-active --quiet grafana-server 2>/dev/null && echo "active" || echo "inactive"

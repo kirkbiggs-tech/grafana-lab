@@ -1,0 +1,29 @@
+name: Grafana Lab CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Test health-check scripts
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download repository
+        uses: actions/checkout@v6
+
+      - name: Validate Bash syntax
+        run: |
+          bash -n scripts/health-check.sh
+          bash -n scripts/test-health-check.sh
+
+      - name: Run automated tests
+        run: ./scripts/test-health-check.shx

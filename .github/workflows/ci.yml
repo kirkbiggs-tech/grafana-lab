@@ -27,3 +27,11 @@ jobs:
 
       - name: Run automated tests
         run: ./scripts/test-health-check.sh
+      - name: Build Docker image
+        run: docker build -t grafana-lab-status:ci docker/
+
+      - name: Run container smoke test
+        run: |
+          docker run -d --rm --name grafana-lab-status-ci -p 8080:80 grafana-lab-status:ci
+          sleep 3
+          curl --fail --silent http://localhost:8080 | grep "Status: Running"

@@ -1,0 +1,15 @@
+[Unit]
+Description=Grafana Lab Alert Webhook Receiver
+After=network.target
+
+[Service]
+Type=simple
+User=kirk
+ExecStart=/usr/bin/python3 "/home/kirk/Grafana lab/scripts/alert-webhook.py"
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

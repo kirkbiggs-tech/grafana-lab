@@ -10,3 +10,6 @@ route:
 
 receivers:
   - name: local-alerts
+    webhook_configs:
+      - url: http://127.0.0.1:5001/alerts
+        send_resolved: true

@@ -1,0 +1,26 @@
+groups:
+  - name: ubuntu-server-alerts
+    rules:
+      - alert: UbuntuServerDown
+        expr: up{job="node"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Ubuntu server is unavailable"
+          description: "Prometheus cannot scrape Node Exporter for more than 1 minute."
+
+      - alert: UbuntuDiskUsageHigh
+        expr: |
+          100 * (
+            1 -
+            node_filesystem_avail_bytes{job="node",mountpoint="/"}
+            /
+            node_filesystem_size_bytes{job="node",mountpoint="/"}
+          ) > 80
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Ubuntu disk usage is above 80%"
+          description: "The root filesystem has exceeded the disk usage warning threshold."

@@ -84,7 +84,7 @@ Acceptance criteria:
 
 Priority: Medium
 Story points: 8
-Status: Backlog
+Status: Done
 
 ## Sprint 1
 

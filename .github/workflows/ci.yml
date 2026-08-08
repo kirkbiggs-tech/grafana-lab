@@ -30,6 +30,7 @@ jobs:
         run: |
           bash -n scripts/health-check.sh
           bash -n scripts/test-health-check.sh
+          bash -n scripts/deploy-status-service.sh
 
       - name: Run automated tests
         run: ./scripts/test-health-check.sh
